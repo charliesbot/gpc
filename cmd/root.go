@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/charliesbot/gpc/internal/ui"
 	"github.com/spf13/cobra"
 )
 
@@ -27,6 +28,10 @@ var rootCmd = &cobra.Command{
 	SilenceUsage:  true,
 	SilenceErrors: true,
 	Version:       "dev",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(ui.Banner(appVersion))
+		cmd.Help()
+	},
 }
 
 func Execute() error {
